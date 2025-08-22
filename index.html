@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Temp-Share Client</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Temporäre Freigabe anlegen</h1>
+
+    <form id="addForm">
+        <fieldset>
+            <legend>Verbindungsdaten</legend>
+            <label for="serverBase">Server (Basis-URL)</label>
+            <input id="serverBase" type="text" value="http://127.0.0.1:8080" required />
+        </fieldset>
+
+        <fieldset style="margin-top:1rem;">
+            <legend>Eintrag</legend>
+
+            <div class="row">
+                <div>
+                    <label>Typ</label>
+                    <label><input type="radio" name="entryType" value="file" checked /> Datei</label>
+                    <label><input type="radio" name="entryType" value="directory" /> Verzeichnis</label>
+                </div>
+                <div>
+                    <label for="ttl">Abklingzeit (Minuten)</label>
+                    <input id="ttl" type="number" min="1" step="1" value="20" />
+                </div>
+            </div>
+
+            <div class="row" style="margin-top:.25rem;">
+                <div>
+                    <label for="amount">Max. Downloads</label>
+                    <input id="amount" type="number" min="1" step="1" value="1" />
+                </div>
+                <div>
+                    <label for="rootSelect">Platte wählen</label>
+                    <select id="rootSelect"></select>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top:.25rem;">
+                <div>
+                    <label for="subPath">Unterordner / Datei</label>
+                    <input id="subPath" type="text" placeholder="z.B. movies/film.mp4" />
+                </div>
+            </div>
+
+            <div class="actions">
+                <button type="submit" id="submitBtn">Anlegen</button>
+                <span id="status" aria-live="polite"></span>
+            </div>
+        </fieldset>
+    </form>
+
+    <div id="result" class="result" hidden></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
